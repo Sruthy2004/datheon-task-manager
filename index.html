@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TaskFlow - Organise and manage your daily tasks.">
+    <title>TaskFlow | Task Manager</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <header class="header">
+        <nav class="navbar container">
+            <a href="#" class="logo">Task<span>Flow.</span></a>
+            <span class="tagline">Plan better. Do better.</span>
+        </nav>
+    </header>
+
+    <main class="container">
+
+        <section class="welcome">
+            <div>
+                <p class="eyebrow">YOUR PRODUCTIVITY DASHBOARD</p>
+                <h1>My Tasks</h1>
+                <p class="subtitle">Organise your day, one task at a time.</p>
+            </div>
+            <div class="date-display" id="today-date"></div>
+        </section>
+
+        <!-- Dashboard statistics -->
+        <section class="stats-grid">
+            <article class="stat-card">
+                <span class="stat-icon">📋</span>
+                <p>Total Tasks</p>
+                <h2 id="total-count">0</h2>
+            </article>
+
+            <article class="stat-card">
+                <span class="stat-icon">⌛</span>
+                <p>Pending</p>
+                <h2 id="pending-count">0</h2>
+            </article>
+
+            <article class="stat-card">
+                <span class="stat-icon">✓</span>
+                <p>Completed</p>
+                <h2 id="completed-count">0</h2>
+            </article>
+
+            <article class="stat-card">
+                <span class="stat-icon">📈</span>
+                <p>Progress</p>
+                <h2 id="progress-count">0%</h2>
+            </article>
+        </section>
+
+        <!-- Add/Edit form -->
+        <section class="panel" id="task-form-section">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">TASK MANAGEMENT</p>
+                    <h2 id="form-heading">Add a New Task</h2>
+                </div>
+            </div>
+
+            <form id="task-form">
+                <div class="form-group">
+                    <label for="task-title">Task name *</label>
+                    <input
+                        type="text"
+                        id="task-title"
+                        placeholder="Enter your task..."
+                        maxlength="100"
+                        required
+                    >
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="task-category">Category</label>
+                        <select id="task-category">
+                            <option value="Personal">Personal</option>
+                            <option value="Work">Work</option>
+                            <option value="Study">Study</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="task-date">Due date</label>
+                        <input type="date" id="task-date">
+                    </div>
+                </div>
+
+                <div class="form-buttons">
+                    <button type="submit" class="btn btn-primary" id="submit-button">
+                        + Add Task
+                    </button>
+
+                    <button type="button" class="btn btn-secondary" id="cancel-button" hidden>
+                        Cancel
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Task list -->
+        <section class="panel">
+            <div class="tasks-heading">
+                <div>
+                    <p class="eyebrow">YOUR WORKSPACE</p>
+                    <h2>My Task List</h2>
+                </div>
+                <span id="task-count-label">0 tasks</span>
+            </div>
+
+            <div class="toolbar">
+                <div class="filters" aria-label="Filter tasks">
+                    <button type="button" class="filter-btn active" data-filter="all">All</button>
+                    <button type="button" class="filter-btn" data-filter="pending">Pending</button>
+                    <button type="button" class="filter-btn" data-filter="completed">Completed</button>
+                </div>
+
+                <input
+                    type="search"
+                    id="search-input"
+                    placeholder="Search tasks..."
+                    aria-label="Search tasks"
+                >
+            </div>
+
+            <div id="task-list" class="task-list" aria-live="polite">
+                <!-- JavaScript displays tasks here -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p>© <span id="year"></span> TaskFlow. Built with HTML, CSS and JavaScript.</p>
+    </footer>
+
+</body>
+</html>
